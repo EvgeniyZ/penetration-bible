@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  kali-light:
+    container_name: "kali"
+    image: "kali-light"
+    volumes:
+      - ./mnt/kali-light:/share
