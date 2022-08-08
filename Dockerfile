@@ -13,7 +13,7 @@ RUN apt -y update && apt -y upgrade && apt -y autoremove && apt clean
 RUN apt install aircrack-ng crackmapexec crunch curl dirb dirbuster dnsenum dnsrecon dnsutils dos2unix enum4linux exploitdb ftp git gobuster hashcat hping3 hydra impacket-scripts john joomscan masscan maltego metasploit-framework mimikatz nasm ncat netcat-traditional nikto nmap patator php powersploit proxychains python-pip python3 recon-ng responder samba samdump2 smbclient smbmap snmp socat sqlmap sslscan sslstrip theharvester vim wafw00f weevely wfuzz whois wordlists wpscan -y --no-install-recommends
 
 # More Tools
-RUN apt install tmux locate less nano apache2 htop wireshark -y --no-install-recommends
+RUN apt install tmux locate less nano apache2 htop -y --no-install-recommends
 
 # Alias
 RUN echo "alias l='ls -al'" >> /root/.bashrc
