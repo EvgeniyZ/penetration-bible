@@ -45,3 +45,57 @@ and replace them with ::.
 	fff0:0:eeee::fe77:3aa
 
 Take note that in IPv6, you can compress a series of zeros only once.
+
+## Ports
+Without a port number, a network packet will never be able to reach its destination.
+1-65535
+
+en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers.
+
+# Nmap
+
+* identify live hosts: nmap -sn 10.0.0.1/24
+* TCP port SYN scan: nmap -sS [IP/Range]
+* UDP port scan: nmap -sU [IP/Range], nmap -sU -T5 [IP/Range] "faster"
+
+For the tweaking part, always remember to choose the speed wisely. For 
+example, don’t use a fast speed like T5 on a production IP address; instead, 
+stick with the default one (T3). 
+Make sure you choose the number of ports that suits your needs, either the top 100 or the default option 1,000
+
+#A quicker TCP scan
+nmap –-top-ports 100 -T5 [IP Address / Range]
+
+#To scan for the HTTP port 80 on the network
+nmap -p 80 [IP Address / Range]
+
+-p- - include all ports
+
+nmap defaults:
+* speed T3
+* scan the top TCP 1000 ports
+* if root -> set SYN TCP scan by default
+
+nmap -p- -T5 10.0.0.1 -> TCP scanning all ports
+
+## Service version scan
+nmap -p- -T5 -sV 10.0.0.1
+
+Specify exact open ports to speed up service scan:
+nmap -p 22,53,80,443 -T5 -sV 10.0.0.1
+
+## Operating System Fingerprinting
+-O option to detect the operating system of the target host.
+
+nmap -sV -O -T4 10.0.0.187
+
+## Nmap Scripting Engine
+The Nmap Scripting Engine contains a set of additional functionalities (like brute force, DNS enumeration, HTTP enumeration, etc.)
+
+/usr/share/nmap/scripts:
+
+nmap -p [port number] -sV –script [NSE script name] [IP address / range]
+
+### Http enumeration:
+nmap -sV -p 80 --script http-enum 10.0.0.1
+
