@@ -99,3 +99,17 @@ nmap -p [port number] -sV –script [NSE script name] [IP address / range]
 ### Http enumeration:
 nmap -sV -p 80 --script http-enum 10.0.0.1
 
+## DNS Enumeration:
+DNS enumeration may allow us to identify the nature of the target host that we want to scan. In addition,
+DNS enumeration will use the public search engines to search for hidden domain names that we were not aware of at the beginning of our engagement.
+
+DNS Brute-force && DNS Zone Transfer techniques
+
+Tools:
+1. Quickly brute-force subdomains based on a good quality dictionary file.
+2. Check for DNS transfer.
+3. Automate a subdomain lookup on internet search engines like Google.
+
+1. Fierce
+2. #sublist3r is on Github
+3. #subbrute is on Github
